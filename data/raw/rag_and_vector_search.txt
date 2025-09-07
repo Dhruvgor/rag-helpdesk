@@ -1,0 +1,40 @@
+RETRIEVAL‑AUGMENTED GENERATION (RAG) & VECTOR SEARCH
+
+What RAG is
+- Combine information retrieval with a generator. Retrieve relevant document chunks → pass them to the model → generate an answer grounded in those chunks.
+
+Core building blocks
+- Chunking: split documents into pieces (e.g., 300–800 tokens) with overlap to preserve context.
+- Embeddings: convert chunks and queries into vectors.
+- Vector Store: FAISS/ANN index for fast nearest‑neighbour search.
+- Retriever: returns top‑k chunks; optional reranking step refines order.
+- Generator: LLM or template that composes the final answer from retrieved context.
+
+Design choices & trade‑offs
+- Chunk size & overlap: bigger chunks = more context but noisier retrieval.
+- Embedding model: small & fast (MiniLM) vs larger & precise.
+- k (top‑k): too low → misses context; too high → adds noise and latency.
+- Caching: store frequent queries/answers to cut cost and latency.
+- Security: never return sensitive chunks directly; consider redaction/filters.
+
+Evaluating retrieval
+- Label a small set of Q/A pairs with the “answer file”. Report:
+  - hit@k: is the correct file among top‑k?
+  - MRR: position‑sensitive reward for the first correct hit.
+  - nDCG: graded relevance if multiple chunks are relevant.
+
+Typical failure modes
+- Synonym gap: query uses different wording than the document → choose better embeddings or add a reranker.
+- Over‑chunking: answer split across chunks → add overlap or hierarchical retrieval.
+- Domain shift: embeddings trained on general text struggle with code/legal/medical → consider domain models or additional keyword filters.
+
+Minimal local API (example behaviour)
+- `POST /ask {"question":"How do I run this app?","k":3}` → returns an answer plus the exact chunks used (“contexts”) and latency.
+- Logging: store the question, retrieved files, and response to debug errors later.
+
+Mini‑FAQ
+Q: Is RAG better than fine‑tuning?
+A: RAG shines when knowledge changes often or can’t be embedded into weights (cost/privacy). Fine‑tuning helps when language style or task format must be learned.
+
+Q: How big should k be?
+A: Start with 3–5; tune on your eval set. If hit@k is low, increase k or improve chunking/embeddings.

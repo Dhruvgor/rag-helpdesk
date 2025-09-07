@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RAG Helpdesk — UI</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script defer src="/static/ui.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>RAG Helpdesk</h1>
+      <div class="actions">
+        <button id="btnReindex" title="Rebuild index from data/raw">Reindex</button>
+        <span id="toast" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+
+    <section class="card two">
+      <div>
+        <label>Ask a question</label>
+        <div class="row">
+          <input id="q" placeholder="e.g., What is Artificial Intelligence?" />
+          <div class="krow">
+            <span>k</span>
+            <input id="k" type="number" value="3" min="1" max="20" />
+            <button id="btnAsk">Ask</button>
+          </div>
+        </div>
+        <p class="muted">Returns contexts and latency (baseline: stitched text; no generator).</p>
+        <pre id="askOut" class="pre">Ready.</pre>
+      </div>
+
+      <div>
+        <label>Available files <span id="fileCount" class="pill">0</span></label>
+        <div class="row">
+          <select id="fileSelect"></select>
+          <button id="btnRefresh">Refresh</button>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Feedback — question</label>
+            <input id="qfb" placeholder="Auto-filled from your last Ask" />
+          </div>
+          <div>
+            <label>Answer file</label>
+            <select id="filefb"></select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="krow">
+            <label for="kfb">Top-k</label>
+            <input id="kfb" type="number" value="5" min="1" max="50" />
+          </div>
+          <button id="btnFb">Submit Feedback</button>
+        </div>
+        <pre id="fbOut" class="pre"></pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <div class="krow">
+          <label for="km">Metrics k</label>
+          <input id="km" type="number" value="5" min="1" max="50" />
+        </div>
+        <button id="btnMetrics">Get Metrics</button>
+      </div>
+      <pre id="mOut" class="pre">No judgements yet. Submit feedback to see metrics.</pre>
+    </section>
+
+    <section class="card">
+      <label>Raw file list (from /files)</label>
+      <pre id="files" class="pre"></pre>
+      <ul class="muted tips">
+        <li>Run <code>python ingest.py</code> after adding docs, or click <strong>Reindex</strong>.</li>
+        <li>Increase <code>k</code> if the correct file isn’t in top-k.</li>
+        <li>Tune chunk size/overlap in <code>ingest.py</code>.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

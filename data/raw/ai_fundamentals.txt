@@ -1,0 +1,43 @@
+ARTIFICIAL INTELLIGENCE — FUNDAMENTALS
+
+What is AI?
+Artificial Intelligence (AI) is the field of building systems that perform tasks which typically require human intelligence—perception, language understanding, planning, problem solving, and learning from data.
+
+Key branches
+- Machine Learning (ML): learning patterns from data to make predictions or decisions.
+- Natural Language Processing (NLP): working with text/speech (translation, summarisation, Q&A).
+- Computer Vision (CV): understanding images/video (classification, detection, segmentation).
+- Knowledge & Reasoning: logic, rules, search/planning, constraint solving.
+- Robotics: perception–planning–control loops in the physical world.
+
+Core concepts
+- Agent & Environment: an AI agent senses the environment and acts to achieve goals.
+- State & Action: the situation the agent is in and what it can do next.
+- Reward/Objective: a measurable signal to optimise (e.g., accuracy, revenue, safety).
+- Learning vs. Inference: learn parameters from data; then use the trained model to make predictions.
+
+Common AI task types
+- Classification: assign a label (spam / not spam).
+- Regression: predict a number (house price).
+- Ranking/Retrieval: order results by relevance.
+- Generation: produce new content (text, code, images).
+- Control: choose actions over time (robotics, recommendation bandits).
+
+Data matters
+- Data quality > model complexity; good labels and coverage reduce errors.
+- Distribution shift: performance can drop when deployment data differs from training data.
+- Monitoring is required post-deployment (drift, latency, cost, safety).
+
+Limitations & risks
+- Hallucinations in generative models; bias from data; privacy and IP risks; overfitting small datasets.
+- AI ≠ full autonomy. Most production systems are human-in-the-loop.
+
+Mini‑FAQ
+Q: Is AI the same as ML?
+A: ML is a major part of AI, but AI also includes rule‑based systems, planning, and search.
+
+Q: Does a bigger model always mean better results?
+A: Only if your data/compute/problem justify it. Data quality and evaluation often matter more.
+
+Q: Why do models fail in production?
+A: Data drift, unhandled edge cases, poor monitoring, and unclear objectives are common causes.

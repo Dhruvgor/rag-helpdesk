@@ -1,0 +1,35 @@
+DEEP LEARNING & LARGE LANGUAGE MODELS
+
+Neural networks — very short
+- A stack of layers that transform inputs to outputs, trained to minimise a loss.
+- CNNs shine on images; RNNs/Transformers on sequences; Transformers now dominate language and many other modalities.
+
+Transformers — the gist
+- Attention lets the model focus on relevant tokens; positional encodings capture order.
+- Pretraining: learn general language patterns on huge corpora.
+- Fine‑tuning/adaptation: align to downstream tasks (instruction‑tuning, LoRA, adapters).
+
+Embeddings
+- Dense vector representations of text/code; similar meanings ≈ nearby vectors.
+- Used for search, clustering, recommendation, and as inputs to RAG pipelines.
+
+LLM strengths
+- Language understanding, summarisation, Q&A, code assistance, data wrangling glue.
+- Fast prototyping via prompting before hard engineering investment.
+
+LLM limits
+- Hallucinations, sensitivity to prompts, context window limits, latency and cost at scale.
+- Safety considerations: PII exposure, harmful outputs, jailbreak risks.
+- Determinism: same prompt may produce different outputs; use temperature/seed/caching controls.
+
+Practical patterns
+- Prompt‑first prototypes → then retrieval or fine‑tuning for reliability.
+- Guardrails: restricted tools, content filters, grounding in trusted data.
+- Evaluation: task‑specific metrics + human spot checks; don’t rely on single examples.
+
+Mini‑FAQ
+Q: Why does my LLM “make things up”?
+A: It learns token probabilities, not facts. Use retrieval (RAG) to ground answers in your documents.
+
+Q: Do I always need an API key?
+A: Not for local open‑source models; but hosting and latency may differ. Choose based on reliability, cost, and privacy needs.

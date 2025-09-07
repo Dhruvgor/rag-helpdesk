@@ -1,0 +1,44 @@
+MACHINE LEARNING — FOUNDATIONS
+
+Problem types
+- Supervised Learning: train with input–label pairs (classification, regression).
+- Unsupervised Learning: discover structure without labels (clustering, PCA).
+- Semi‑Supervised / Weak Supervision: use limited labels plus heuristics or rules.
+- Reinforcement Learning: learn actions via rewards over time.
+
+Typical ML pipeline
+1) Problem framing + metric (what business outcome are we optimising?).
+2) Data collection & cleaning (nulls, outliers, leakage checks).
+3) Split data: train/validation/test with honest separation.
+4) Feature engineering: domain features, normalisation/standardisation.
+5) Model training: baselines → stronger models.
+6) Evaluation: report multiple metrics with confidence, not just accuracy.
+7) Deployment & monitoring: latency, cost, drift, alerting.
+
+Key concepts
+- Bias–Variance: underfit vs overfit trade‑off.
+- Cross‑Validation: robust estimate when data is limited.
+- Regularisation: L1/L2/dropout to reduce overfit.
+- Class Imbalance: use stratified splits, thresholds, or specialised metrics.
+- Feature Leakage: information from the future or target sneaking into training—avoid!
+
+Useful metrics (examples)
+- Classification: Precision/Recall/F1, ROC‑AUC, PR‑AUC.
+- Regression: MAE, RMSE, R^2.
+- Ranking: MAP, MRR, nDCG.
+- Calibration: Brier score, reliability curves.
+
+Common algorithms
+- Linear/Logistic regression, Decision Trees/Random Forests, Gradient Boosted Trees (XGBoost/LightGBM), k‑NN, SVM.
+- For text: bag‑of‑words/TF‑IDF as strong baselines before deep models.
+
+Deployment notes
+- Package the trained model and its preprocessing together.
+- Validate input schema at inference; log predictions and errors for later analysis.
+
+Mini‑FAQ
+Q: Do I need deep learning for every task?
+A: No. For many tabular problems, tree‑based models win with less compute and complexity.
+
+Q: Why are train and test scores so different?
+A: Overfitting—fix with more data, regularisation, simpler models, or better validation.

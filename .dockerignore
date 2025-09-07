@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+venv/
+.env
+data/raw/*        # if you prefer to mount raw docs at runtime, ignore them
+data/index/*      # indexes are built at image build time
+data/eval/*.tmp
