@@ -110,7 +110,7 @@ jobs:
 Docker (optional)
 docker build -t rag-helpdesk .
 docker run -p 8000:8000 rag-helpdesk
-# then open http://127.0.0.1:8000
+then open http://127.0.0.1:8000
 If you want to mount docs at runtime instead of baking them into the image, adjust the Dockerfile and call /reindex on start.
 
 Security & privacy
@@ -118,11 +118,13 @@ Security & privacy
 If you add an external LLM, pass only minimal context and scrub PII.
 
 FAQ
-Why not just fine-tune an LLM?
+1)Why not just fine-tune an LLM?
 Because facts change and access is the constraint. RAG lets you refresh knowledge by re-indexing docs, not retraining weights.
-Why not a fancy UI?
+
+2)Why not a fancy UI?
 Because flashy UIs hide retrieval error. This repo’s value is evaluation and reproducibility.
-It missed an obvious answer—why?
+
+3)It missed an obvious answer—why?
 Likely chunking or wording. Increase k, raise chunk size/overlap, or enable the TF-IDF hybrid.
 
 
