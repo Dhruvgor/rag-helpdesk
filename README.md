@@ -37,13 +37,16 @@ python ingest.py          # builds data/index/*
 Put your .txt files in data/raw/ first (four sample AI docs are fine to start).
 2) Run the API + UI
 python app.py
-# opens http://127.0.0.1:8000  (UI at /)
+
+opens http://127.0.0.1:8000  (UI at /)
+
 3) Use the UI
 Ask a question → get contexts + latency.
 Submit feedback (pick the file that best answers the question).
 Get metrics → shows hit@k, MRR, nDCG@k.
 Reindex when you change data/raw/ (no server restart needed).
 4) API examples (PowerShell)
+
 # List files
 (iwr http://127.0.0.1:8000/files).Content
 
